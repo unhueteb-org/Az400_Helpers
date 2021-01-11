@@ -68,6 +68,7 @@ In this exercise, you will create a DevOps Starter example that will:
 
 1.  Choose **.NET** for you application and click on **Next**.
 1.  Choose **ASP .NET Core** and click on **Next**.
+1.  We will choose the Azure App Service for the website deployment on this lab, so select **Windows Web App** and click **Next**.
 1.  Now we need to authorize Azure to create the needed resources on our GitHub account. Click on **Authorize**.
 
     - **Organization**: choose your GitHub organization (or leave default).
