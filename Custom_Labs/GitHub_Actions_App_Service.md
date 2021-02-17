@@ -86,3 +86,32 @@ In this exercise, you will create a DevOps Starter example that will:
     - Review the created workflow (yaml file), which defines 3 jobs (build, deploy and Functional Tests).
     - Review the progress of the workflow on the **Actions** section of the GitHub repository page.
     - Azure also created the needed credentials for us as GitHub Secrets. Go to **Settings** > **Secrets** to find the created Azure credentials used by the actions interacting with Azure. 
+
+### Exercise 2: Remove the Azure lab resources
+
+In this exercise, you will remove the Azure resources provisione in this lab to eliminate unexpected charges. 
+
+>**Note**: Remember to remove any newly created Azure resources that you no longer use. Removing unused resources ensures you will not see unexpected charges.
+
+#### Task 1: Remove the Azure lab resources
+
+In this task, you will use Azure Cloud Shell to remove the Azure resources provisioned in this lab to eliminate unnecessary charges. 
+
+1.  In the Azure portal, open the **Bash** shell session within the **Cloud Shell** pane.
+1.  List all resource groups created throughout the labs of this module by running the following command:
+
+    ```sh
+    az group list --query "[?starts_with(name,'az400module8githubaction')].name" --output tsv
+    ```
+
+1.  Delete all resource groups you created throughout the labs of this module by running the following command:
+
+    ```sh
+    az group list --query "[?starts_with(name,'az400module8githubaction')].[name]" --output tsv | xargs -L1 bash -c 'az group delete --name $0 --no-wait --yes'
+    ```
+
+    >**Note**: The command executes asynchronously (as determined by the --nowait parameter), so while you will be able to run another Azure CLI command immediately afterwards within the same Bash session, it will take a few minutes before the resource groups are actually removed.
+
+## Review
+
+In this lab, you configured CI/CD pipelines as code with YAML in Azure DevOps.
